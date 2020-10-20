@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
       - name: module-maker
-        image: us.gcr.io/cs1530group11/redis-module-maker-05
+        image: us.gcr.io/cs1530group11/redis-module-maker-04
         ports:
           - containerPort: 6379
             name: client
