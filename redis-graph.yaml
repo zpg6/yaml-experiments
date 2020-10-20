@@ -6,8 +6,8 @@ metadata:
 data:
   update-node.sh: |
     #!/bin/sh
-    apt-get install curl
-    curl -o /data/redis-graph.so 
+    sudo apt-get install curl
+    curl -o /data/redis-graph.so http://raw.githubusercontent.com/zpg6/yaml-experiments/main/redis-graph.so
     REDIS_NODES="/data/nodes.conf"
     sed -i -e "/myself/ s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/${POD_IP}/" ${REDIS_NODES}
     exec "$@"
