@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis:6.0-alpine
+        image: redis
         command: ["/etc/redis/update-node.sh", "redis-server","/etc/redis/redis.conf"]
         ports:
         - containerPort: 6379

@@ -12,7 +12,7 @@ data:
     apt-get -y install git
     rm -rf yaml-experiments/
     git clone https://github.com/zpg6/yaml-experiments.git
-    exec "$@"
+    exec "$@" 
   redis.conf: |+
     cluster-enabled yes
     cluster-require-full-coverage no
