@@ -39,13 +39,13 @@ spec:
     spec:
       containers:
       - name: redisgraph-cluster
-        image: us.gcr.io/cs1530group11/redis-module-maker-04
+        image: redislabs/redisgraph
         ports:
           - containerPort: 6379
             name: client
           - containerPort: 16379
             name: gossip
-        command: ["/conf/update-node.sh", "redis-server", "/conf/redis.conf", "--loadmodule /data/redisgraph/redisgraph.so"]
+        command: ["/conf/update-node.sh", "redis-server", "/conf/redis.conf"]
         env:
         - name: REDIS_PASSWORD
           value: x95b1x91zbJu9ws217eyu299y2047hd21io1nsq
