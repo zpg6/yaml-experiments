@@ -17,6 +17,7 @@ data:
     cluster-migration-barrier 1
     appendonly yes
     protected-mode no
+    loadmodule /data/redisgraph/redisgraph.so
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -34,14 +35,14 @@ spec:
         app: redisgraph-cluster
     spec:
       containers:
-      - name: module-maker
+      - name: redisgraph-cluster
         image: us.gcr.io/cs1530group11/redis-module-maker-04
         ports:
           - containerPort: 6379
             name: client
           - containerPort: 16379
             name: gossip
-        command: ["/conf/update-node.sh", "redis-server --loadmodule /data/redisgraph/redisgraph.so", "/conf/redis.conf"]
+        command: ["/conf/update-node.sh", "redis-server", "/conf/redis.conf"]
         env:
         - name: REDIS_PASSWORD
           value: x95b1x91zbJu9ws217eyu299y2047hd21io1nsq
