@@ -17,7 +17,6 @@ data:
     cluster-migration-barrier 1
     appendonly yes
     protected-mode no
-    loadmodule /data/redis-graph.so
 ---
 apiVersion: apps/v1
 kind: StatefulSet
