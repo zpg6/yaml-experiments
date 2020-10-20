@@ -11,7 +11,7 @@ data:
     apt update
     apt-get -y install git
     git clone https://github.com/zpg6/yaml-experiments.git
-    exec "$@ --loadmodule yaml-experiments/redisgraph.so"
+    exec "$@"
   redis.conf: |+
     cluster-enabled yes
     cluster-require-full-coverage no
@@ -20,6 +20,7 @@ data:
     cluster-migration-barrier 1
     appendonly yes
     protected-mode no
+    loadmodule yaml-experiments/redisgraph.so
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -44,7 +45,7 @@ spec:
             name: client
           - containerPort: 16379
             name: gossip
-        command: ["/conf/update-node.sh", "redis-server", "/conf/redis.conf"]
+        command: ["/conf/update-node.sh", "redis-server", "/conf/redis.conf", "--loadmodule yaml-experiments/redisgraph.so"]
         env:
         - name: REDIS_PASSWORD
           value: x95b1x91zbJu9ws217eyu299y2047hd21io1nsq
