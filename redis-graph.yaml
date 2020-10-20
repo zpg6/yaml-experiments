@@ -35,6 +35,15 @@ spec:
         app: redisgraph-cluster
     spec:
       containers:
+      - name: module-maker
+        image: us.gcr.io/cs1530group11/redis-module-maker-03
+        env:
+        - name: REDIS_PASSWORD
+          value: x95b1x91zbJu9ws217eyu299y2047hd21io1nsq
+        volumeMounts:
+        - name: data
+          mountPath: /data
+          readOnly: false 
       - name: redisgraph
         image: redislabs/redisgraph
         ports:
@@ -54,7 +63,7 @@ spec:
           readOnly: false
         - name: data
           mountPath: /data
-          readOnly: false
+          readOnly: false 
       volumes:
       - name: conf
         configMap:
