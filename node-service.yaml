@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-rg-kube-service
+spec:
+  ports:
+    - protocol: TCP
+      targetPort: 9000
+      port: 9000
+  selector:
+    app: node-rg-kube
+  type: LoadBalancer
