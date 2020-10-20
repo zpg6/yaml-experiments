@@ -17,6 +17,7 @@ data:
     cluster-migration-barrier 1
     appendonly yes
     protected-mode no
+    loadmodule /data/redisgraph/redisgraph.so
 ---
 apiVersion: apps/v1
 kind: StatefulSet

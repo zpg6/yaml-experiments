@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: module-maker-cluster
+spec:
+  serviceName: module-maker-cluster
+  replicas: 1
+  selector:
+    matchLabels:
+      app: module-maker-cluster
+  template:
+    metadata:
+      labels:
+        app: module-maker-cluster
+    spec:
+      containers:
+      - name: module-
+        image: us.gcr.io/cs1530group11/redis-module-maker-01
+        volumeMounts:
+        - name: data
+          mountPath: /data
+          readOnly: false
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
