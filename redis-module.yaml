@@ -14,8 +14,8 @@ spec:
         app: module-maker-cluster
     spec:
       containers:
-      - name: redis-module-maker-01
-        image: us.gcr.io/cs1530group11/redis-module-maker-02
+      - name: module-maker
+        image: us.gcr.io/cs1530group11/redis-module-maker-03
         volumeMounts:
         - name: data
           mountPath: /data
