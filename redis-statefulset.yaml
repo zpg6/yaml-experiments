@@ -74,7 +74,7 @@ spec:
         command: [ "sh", "-c" ]
         args:
           - |
-            ./redis-server /etc/redis/redis.conf
+            redis-server /etc/redis/redis.conf
             echo "executed the server start with cmd: `./redis-server /etc/redis/redis.conf`"
         ports:
         - containerPort: 6379
