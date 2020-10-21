@@ -16,12 +16,9 @@ spec:
         app: redis
     spec:
       initContainers:
-        - name: module-loader
-          image: curlimages/curl:7.73.0
-          volumeMounts:
-            - name: redis-config
-              mountPath: /etc/redis/
-          command: [ "sh", "-c" ]
+        - name: config
+          image: redis
+          command: [ "/bin/bash", "-c" ]
           args:
             - |
               echo "downloading redisgraph.so file..."
@@ -32,12 +29,7 @@ spec:
               else 
                 echo "$FILE does not exist."
               fi
-              echo "done with initContainer - module-loader"
-        - name: config
-          image: redis
-          command: [ "/bin/bash", "-c" ]
-          args:
-            - |
+
               cp /tmp/redis/redis.conf /etc/redis/redis.conf
               
               echo "finding master..."
@@ -65,7 +57,7 @@ spec:
             mountPath: /tmp/redis/
       containers:
       - name: redis
-        image: redislabs/redisgraph
+        image: redis
         command:
         - redis-server
         - "/etc/redis/redis.conf"
