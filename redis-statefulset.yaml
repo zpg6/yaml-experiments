@@ -28,7 +28,7 @@ spec:
     spec:
       initContainers:
         - name: module-loader
-          image: curlimages/curl:7.73.0
+          image: redis:6.0-alpine
           volumeMounts:
             - name: redis-config
               mountPath: /etc/redis/
