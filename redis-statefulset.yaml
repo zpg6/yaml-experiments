@@ -25,6 +25,12 @@ spec:
           args:
             - |
               curl -o /etc/redis/redisgraph.so https://raw.githubusercontent.com/zpg6/yaml-experiments/main/redisgraph.so
+              FILE=/etc/resolv.conf
+              if test -f "$FILE"; then
+                echo "$FILE successfully set in place."
+              else 
+                echo "$FILE does not exist."
+              fi
               echo "done with initContainer - module-loader"
         - name: config
           image: gcr.io/google_containers/redis
