@@ -24,7 +24,6 @@ data:
     masterauth 2817bx33819nzxshqbj2098uwqjldwp928e38y4621
     requirepass 2817bx33819nzxshqbj2098uwqjldwp928e38y4621
     bind 0.0.0.0
-    protected-mode no
     port 6379
     tcp-backlog 511
     timeout 0
