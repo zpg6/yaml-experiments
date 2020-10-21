@@ -55,7 +55,7 @@ spec:
                 echo "slaveof $MASTER 6379" >> /etc/redis/redis.conf
               fi
               echo "done with initContainer - config"
-              echo "executing the server start with cmd: ./redis-server /etc/redis/redis.conf" ]
+              echo "executing the server start"
           volumeMounts:
           - name: redis-config
             mountPath: /etc/redis/
