@@ -1,3 +1,16 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: slow
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+  fstype: ext4
+  replication-type: none
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -76,7 +89,7 @@ spec:
       name: data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "standard"
+      storageClassName: "slow"
       resources:
         requests:
           storage: 50Mi
