@@ -29,7 +29,6 @@ data:
     timeout 0
     tcp-keepalive 300
     daemonize yes
-    supervised no
     pidfile "/var/run/redis_6379.pid"
     loglevel notice
     logfile ""
