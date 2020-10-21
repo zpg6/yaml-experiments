@@ -87,7 +87,7 @@ spec:
   - metadata:
       name: data
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: [ "ReadWriteMany" ]
       storageClassName: "redis-sc"
       resources:
         requests:
