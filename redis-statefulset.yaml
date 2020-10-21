@@ -23,6 +23,7 @@ spec:
           args:
             - |
               curl -o /etc/redis/redisgraph.so https://raw.githubusercontent.com/zpg6/yaml-experiments/main/redisgraph.so
+              echo "done with initContainer - module-loader"
         - name: config
           image: redis:6.0-alpine
           command: [ "sh", "-c" ]
@@ -45,6 +46,7 @@ spec:
                 echo "master found : $MASTER, updating redis.conf"
                 echo "slaveof $MASTER 6379" >> /etc/redis/redis.conf
               fi
+              echo "done with initContainer - config"
           volumeMounts:
           - name: redis-config
             mountPath: /etc/redis/
