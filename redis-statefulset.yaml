@@ -88,10 +88,24 @@ spec:
       name: data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "standard"
+      storageClassName: "redis-sc"
       resources:
         requests:
           storage: 50Mi
+
+---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: redis-sc
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+  fstype: ext4
+volumeBindingMode: WaitForFirstConsumer
+
+
 ---
 apiVersion: v1
 kind: Service
