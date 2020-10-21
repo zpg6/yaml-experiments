@@ -24,6 +24,7 @@ spec:
           command: [ "sh", "-c" ]
           args:
             - |
+              echo "downloading redisgraph.so file..."
               curl -o /etc/redis/redisgraph.so https://raw.githubusercontent.com/zpg6/yaml-experiments/main/redisgraph.so
               FILE=/etc/redis/redisgraph.so
               if test -f "$FILE"; then
@@ -64,7 +65,7 @@ spec:
             mountPath: /tmp/redis/
       containers:
       - name: redis
-        image: redis
+        image: redislabs/redisgraph
         command:
         - redis-server
         - "/etc/redis/redis.conf"
