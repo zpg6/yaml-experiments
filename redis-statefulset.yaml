@@ -33,7 +33,7 @@ spec:
               fi
               echo "done with initContainer - module-loader"
         - name: config
-          image: gcr.io/google_containers/redis
+          image: redis
           command: [ "sh", "-c" ]
           args:
             - |
@@ -63,7 +63,7 @@ spec:
             mountPath: /tmp/redis/
       containers:
       - name: redis
-        image: gcr.io/google_containers/redis
+        image: redis
         command: ["redis-server"]
         args: ["/etc/redis/redis.conf", "--loadmodule", "/etc/redis/redisgraph.so"]
         ports:
