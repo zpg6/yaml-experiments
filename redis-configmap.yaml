@@ -15,3 +15,4 @@ data:
     dir "/data"
     appendonly yes
     appendfilename "appendonly.aof"
+    loadmodule /etc/redis/redisgraph.so
