@@ -3,31 +3,6 @@ kind: ConfigMap
 metadata:
   name: redis-config
 data:
-  update-node.sh: |
-    #!/bin/sh
-    cp /tmp/redis/redis.conf /etc/redis/redis.conf
-            
-    echo "finding master..."
-    if [ "$(redis-cli -h sentinel -p 5000 ping)" != "PONG" ]; then
-      echo "master not found, defaulting to redis-0..."
-
-      if [ "$(hostname)" == "redis-0" ]; then
-        echo "this is redis-0, not updating config..."
-      else
-        echo "updating redis.conf..."
-        echo "slaveof redis-0.redis.redis.svc.cluster.local 6379" >> /etc/redis/redis.conf
-      fi
-    else
-      echo "sentinel found, finding master"
-      MASTER="$(redis-cli -h sentinel -p 5000 sentinel get-master-addr-by-name mymaster | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')"
-      echo "master found : $MASTER, updating redis.conf to reflect this"
-      echo "slaveof $MASTER 6379" >> /etc/redis/redis.conf
-    fi
-    apt update
-    apt-get -y install git
-    rm -rf yaml-experiments/
-    git clone https://github.com/zpg6/yaml-experiments.git
-    exec "$@"
   redis.conf: |
     # Redis configuration file example.
     #
@@ -73,7 +48,7 @@ data:
     # Load modules at startup. If the server is not able to load modules
     # it will abort. It is possible to use multiple loadmodule directives.
     #
-    loadmodule /yaml-experiments/redisgraph.so
+    loadmodule /etc/redis/redisgraph.so
 
     ################################## NETWORK #####################################
 
