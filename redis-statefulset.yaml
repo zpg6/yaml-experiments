@@ -27,7 +27,7 @@ spec:
               curl -o /etc/redis/redisgraph.so https://raw.githubusercontent.com/zpg6/yaml-experiments/main/redisgraph.so
               echo "done with initContainer - module-loader"
         - name: config
-          image: redis:6.0-alpine
+          image: gcr.io/google_containers/redis
           command: [ "sh", "-c" ]
           args:
             - |
@@ -57,7 +57,7 @@ spec:
             mountPath: /tmp/redis/
       containers:
       - name: redis
-        image: redis:6.0-alpine
+        image: gcr.io/google_containers/redis
         command: ["redis-server"]
         args: ["/etc/redis/redis.conf"]
         ports:
