@@ -1,0 +1,50 @@
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: slow
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+  fstype: ext4
+  replication-type: none
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
+
+---
+
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config
+data:
+  redis.conf: |
+    masterauth 2817bx33819nzxshqbj2098uwqjldwp928e38y4621
+    requirepass 2817bx33819nzxshqbj2098uwqjldwp928e38y4621
+    bind 0.0.0.0
+    protected-mode no
+    port 6379
+    tcp-backlog 511
+    timeout 0
+    tcp-keepalive 300
+    daemonize yes
+    supervised no
+    pidfile "/var/run/redis_6379.pid"
+    loglevel notice
+    logfile ""
+    databases 16
+    always-show-logo yes
+    save 900 1
+    save 300 10
+    save 60 10000
+    stop-writes-on-bgsave-error yes
+    rdbcompression yes
+    rdbchecksum yes
+    dbfilename "dump.rdb"
+    rdb-del-sync-files no
+    dir "/data"
+    appendonly yes
+    appendfilename "appendonly.aof"
+    
