@@ -30,18 +30,9 @@ data:
     tcp-keepalive 300
     daemonize yes
     pidfile "/var/run/redis_6379.pid"
-    loglevel notice
-    logfile ""
-    databases 16
-    always-show-logo yes
-    save 900 1
-    save 300 10
-    save 60 10000
-    stop-writes-on-bgsave-error yes
     rdbcompression yes
     rdbchecksum yes
     dbfilename "dump.rdb"
-    rdb-del-sync-files no
     dir "/data"
     appendonly yes
     appendfilename "appendonly.aof"
