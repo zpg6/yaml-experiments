@@ -49,6 +49,7 @@ spec:
                 echo "slaveof $MASTER 6379" >> /etc/redis/redis.conf
               fi
               echo "done with initContainer - config"
+              echo "executing the server start with cmd: ./redis-server /etc/redis/redis.conf" ]
           volumeMounts:
           - name: redis-config
             mountPath: /etc/redis/
@@ -57,11 +58,7 @@ spec:
       containers:
       - name: redis
         image: redis:6.0-alpine
-        command: [ "sh", "-c" ]
-        args:
-          - |
-            redis-server /etc/redis/redis.conf
-            echo "executed the server start with cmd: ./redis-server /etc/redis/redis.conf"
+        command: [ "redis-server", "/etc/redis/redis.conf"]
         ports:
         - containerPort: 6379
           name: redis
