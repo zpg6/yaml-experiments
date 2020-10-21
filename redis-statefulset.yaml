@@ -21,7 +21,7 @@ spec:
           volumeMounts:
             - name: redis-config
               mountPath: /etc/redis/
-          command: [ "sh", "-c" ]
+          command: [ "/bin/bash", "-c" ]
           args:
             - |
               curl -o /etc/redis/redisgraph.so https://raw.githubusercontent.com/zpg6/yaml-experiments/main/redisgraph.so
@@ -34,7 +34,7 @@ spec:
               echo "done with initContainer - module-loader"
         - name: config
           image: redis
-          command: [ "sh", "-c" ]
+          command: [ "/bin/bash", "-c" ]
           args:
             - |
               cp /tmp/redis/redis.conf /etc/redis/redis.conf
