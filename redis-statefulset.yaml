@@ -1,3 +1,4 @@
+
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -10,7 +11,9 @@ parameters:
 reclaimPolicy: Retain
 allowVolumeExpansion: true
 volumeBindingMode: Immediate
+
 ---
+
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -28,7 +31,7 @@ spec:
     spec:
       initContainers:
         - name: module-loader
-          image: redis:6.0-alpine
+          image: curlimages/curl:7.73.0
           volumeMounts:
             - name: redis-config
               mountPath: /etc/redis/
@@ -67,9 +70,12 @@ spec:
             mountPath: /tmp/redis/
       containers:
       - name: redis
-        image: redis
-        command: ["redis-server"]
-        args: ["/etc/redis/redis.conf"]
+        image: redis:6.0-alpine
+        command: [ "sh", "-c" ]
+        args:
+          - |
+            ./redis-server /etc/redis/redis.conf
+            echo "executed the server start with cmd: `./redis-server /etc/redis/redis.conf`"
         ports:
         - containerPort: 6379
           name: redis
