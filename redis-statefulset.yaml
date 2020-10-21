@@ -44,7 +44,7 @@ spec:
                 echo "master not found, defaulting to redis-0"
                 str="redis-0"
                 if [ "$(hostname)" ==  "$str" ]; then
-                  echo "this is redis-0, not updating config..."
+                  echo "shoot, i am redis-0...not updating config..."
                 else
                   echo "updating redis.conf..."
                   echo "slaveof redis-0.redis.redis.svc.cluster.local 6379" >> /etc/redis/redis.conf
