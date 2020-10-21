@@ -65,7 +65,7 @@ spec:
       - name: redis
         image: gcr.io/google_containers/redis
         command: ["redis-server"]
-        args: ["/etc/redis/redis.conf"]
+        args: ["/etc/redis/redis.conf", "--loadmodule", "/etc/redis/redisgraph.so"]
         ports:
         - containerPort: 6379
           name: redis
