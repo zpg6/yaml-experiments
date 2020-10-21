@@ -25,7 +25,7 @@ spec:
           args:
             - |
               curl -o /etc/redis/redisgraph.so https://raw.githubusercontent.com/zpg6/yaml-experiments/main/redisgraph.so
-              FILE=/etc/resolv.conf
+              FILE=/etc/redis/redisgraph.so
               if test -f "$FILE"; then
                 echo "$FILE successfully set in place."
               else 
