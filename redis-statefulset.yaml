@@ -21,7 +21,7 @@ spec:
           volumeMounts:
             - name: redis-config
               mountPath: /etc/redis/
-          command: [ "/bin/bash", "-c" ]
+          command: [ "sh", "-c" ]
           args:
             - |
               curl -o /etc/redis/redisgraph.so https://raw.githubusercontent.com/zpg6/yaml-experiments/main/redisgraph.so
