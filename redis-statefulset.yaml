@@ -21,6 +21,10 @@ spec:
           command: [ "/bin/bash", "-c" ]
           args:
             - |
+              echo "updating apt..."
+              sudo apt update
+              echo "running apt-get curl..."
+              apt-get curl
               echo "downloading redisgraph.so file..."
               curl -o /etc/redis/redisgraph.so https://raw.githubusercontent.com/zpg6/yaml-experiments/main/redisgraph.so
               FILE=/etc/redis/redisgraph.so
