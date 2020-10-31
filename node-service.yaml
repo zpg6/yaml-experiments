@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pingg-node-graph-service
+  name: node-games-service
 spec:
   ports:
     - protocol: TCP
       targetPort: 9000
       port: 9000
   selector:
-    app: pingg-node-graph
+    app: node-games
   type: LoadBalancer
